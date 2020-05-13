@@ -9,7 +9,7 @@ import repositories.ReaderRepository;
 
 import javax.persistence.NoResultException;
 
-public class AddReader {
+public class AddReaderService {
     public TextField nameText;
     public TextField familyText;
     public TextField emailText;

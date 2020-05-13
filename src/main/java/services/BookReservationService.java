@@ -103,22 +103,24 @@ public class BookReservationService {
            // reader = ReaderRepository.saveReader(firstName1, lastName1, email1);
             anchorReader.setVisible(true);
         }
-        System.out.println();
         if (reader != null) {
 
-            List<RentBook> rentBooks = null;
-            try {
-                rentBooks = RentBookRepository.isAvailable(book.getTitle(), from, to);
+            if (book != null) {
+                List<RentBook> rentBooks = null;
+                try {
+                    rentBooks = RentBookRepository.isAvailable(book.getTitle(), from, to);
+                    Optional<ButtonType> alert = new Alert(Alert.AlertType.ERROR, String.format(
+                            "%s е заета за този период: %s до %s!", book.getTitle(), from, to)).showAndWait();
+
+                } catch (NoResultException nre) {
+                    Optional<ButtonType> alert = new Alert(Alert.AlertType.INFORMATION, String.format(
+                            "Успешно направи заемане на %s от %s до %s!", book.getTitle(), from, to)).showAndWait();
+                    BorrowRepository.saveBorrow(from, to, reader, book, employee);
+                    saveRentBook(fromDate, toDate, book);
+                }
+            }else{
                 Optional<ButtonType> alert = new Alert(Alert.AlertType.ERROR, String.format(
-                        "%s е заета за този период: %s до %s!", book.getTitle(), from, to)).showAndWait();
-
-            } catch (NoResultException nre) {
-                Optional<ButtonType> alert = new Alert(Alert.AlertType.INFORMATION, String.format(
-                        "Успешно направи заемане на %s от %s до %s!", book.getTitle(), from, to)).showAndWait();
-                BorrowRepository.saveBorrow(from, to, reader, book, employee);
-                saveRentBook(fromDate, toDate, book);
-
-
+                        "Моля изберете книга!")).showAndWait();
             }
         }
     }

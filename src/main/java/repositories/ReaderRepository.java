@@ -3,6 +3,7 @@ package repositories;
 import domain.entities.Reader;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 
 public class ReaderRepository {
 
