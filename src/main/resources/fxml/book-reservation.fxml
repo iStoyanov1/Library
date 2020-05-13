@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="490.0" prefWidth="881.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="services.BookReservationService">
+   <children>
+      <TextField fx:id="email" layoutX="125.0" layoutY="188.0" />
+      <Label layoutX="76.0" layoutY="192.0" text="Имейл:" />
+      <Label layoutX="140.0" layoutY="134.0" text="Данни на заемане:" />
+      <DatePicker fx:id="dateFrom" layoutX="112.0" layoutY="305.0" />
+      <DatePicker fx:id="dateTo" layoutX="112.0" layoutY="349.0" />
+      <Label layoutX="90.0" layoutY="309.0" text="От:" />
+      <Label layoutX="89.0" layoutY="353.0" text="До:" />
+      <Button fx:id="searchButton" layoutX="729.0" layoutY="121.0" mnemonicParsing="false" onAction="#search" text="Търси" />
+      <TextField fx:id="searchField" layoutX="570.0" layoutY="121.0" />
+      <ComboBox fx:id="searchCombo" layoutX="441.0" layoutY="121.0" prefHeight="26.0" prefWidth="118.0" />
+      <Label layoutX="319.0" layoutY="125.0" text="Критерий по търсене:" />
+      <TableView fx:id="tableView" layoutX="319.0" layoutY="188.0" prefHeight="260.0" prefWidth="502.0">
+        <columns>
+          <TableColumn fx:id="titleColumn" prefWidth="90.4000244140625" text="Заглавие" />
+          <TableColumn fx:id="authorColumn" prefWidth="83.20001220703125" text="Автор" />
+            <TableColumn fx:id="genreColumn" prefWidth="65.5999755859375" text="Жанр" />
+            <TableColumn fx:id="yearColumn" prefWidth="70.4000244140625" text="Година" />
+            <TableColumn fx:id="publisherColumn" prefWidth="80.79998779296875" text="Издателство" />
+            <TableColumn fx:id="categoryColumn" prefWidth="75.0" text="Категория" />
+        </columns>
+      </TableView>
+      <Button fx:id="borrowBook" layoutX="112.0" layoutY="421.0" mnemonicParsing="false" onAction="#borrow" prefHeight="26.0" prefWidth="174.0" text="Потвърждаване" />
+      <Button fx:id="referenceForBook" layoutX="673.0" layoutY="32.0" mnemonicParsing="false" onAction="#referenceBook" prefHeight="26.0" prefWidth="149.0" text="Справки за заети книги" />
+      <Button fx:id="readerHistory" layoutX="455.0" layoutY="33.0" mnemonicParsing="false" onAction="#readerHistory" prefHeight="26.0" prefWidth="190.0" text="Справки за история на читател" />
+      <Button fx:id="signOut" layoutX="46.0" layoutY="34.0" mnemonicParsing="false" text="Изход" />
+      <AnchorPane fx:id="anchorReader" layoutX="99.0" layoutY="217.0" prefHeight="84.0" prefWidth="200.0" style="-fx-border-color: #dbd1d0;" visible="false">
+         <children>
+            <Label layoutX="33.0" text="Няма читател с &#10;такъв имейл в системата!" textFill="#df0e0e" />
+            <Button fx:id="add" layoutX="129.0" layoutY="51.0" mnemonicParsing="false" onAction="#addReader" text="Добави" />
+            <Label layoutX="25.0" layoutY="55.0" text="Добави читател:" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

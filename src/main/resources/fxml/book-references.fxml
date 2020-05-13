@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="602.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="services.BookReferenceService">
+   <children>
+      <TextField fx:id="bookField" layoutX="234.0" layoutY="47.0" prefHeight="26.0" prefWidth="156.0" />
+      <Label layoutX="122.0" layoutY="51.0" text="Заглавие на книга:" />
+      <TableView fx:id="tableView" layoutX="107.0" layoutY="117.0" prefHeight="200.0" prefWidth="409.0">
+        <columns>
+          <TableColumn fx:id="title" prefWidth="92.79998779296875" text="Заглавие" />
+          <TableColumn fx:id="author" prefWidth="88.00004577636719" text="Автор" />
+            <TableColumn fx:id="startDate" prefWidth="100.800048828125" text="Дата на заемане" />
+            <TableColumn fx:id="endDate" prefWidth="124.800048828125" text="Дата на връщане" />
+        </columns>
+      </TableView>
+      <Label fx:id="bookLabel" layoutX="262.0" layoutY="90.0" prefHeight="18.0" prefWidth="74.0" />
+      <Button fx:id="reference" layoutX="399.0" layoutY="47.0" mnemonicParsing="false" onAction="#reference" text="Справка" />
+   </children>
+</AnchorPane>

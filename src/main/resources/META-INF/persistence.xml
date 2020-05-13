@@ -1,0 +1,17 @@
+
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+    <!-- Define persistence unit -->
+    <persistence-unit name="Persistence" transaction-type="RESOURCE_LOCAL">
+        <properties>
+            <!-- database connection -->
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/library_db?useSSL=false&amp;createDatabaseIfNotExist=TRUE"/>
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+            <property name="hibernate.connection.username" value="root" />
+            <property name="hibernate.connection.password" value="root" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MariaDB10Dialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+        </properties>
+    </persistence-unit>
+</persistence>

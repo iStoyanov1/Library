@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="325.0" prefWidth="412.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="services.AddReader">
+   <children>
+      <TextField fx:id="nameText" layoutX="144.0" layoutY="84.0" />
+      <Label layoutX="116.0" layoutY="88.0" text="Име:" />
+      <Label layoutX="89.0" layoutY="135.0" text="Фамилия:" />
+      <TextField fx:id="familyText" layoutX="144.0" layoutY="131.0" />
+      <TextField fx:id="emailText" layoutX="144.0" layoutY="178.0" />
+      <Label layoutX="95.0" layoutY="182.0" text="Имейл:" />
+      <Button fx:id="add" layoutX="139.0" layoutY="230.0" mnemonicParsing="false" onAction="#addReader" prefHeight="26.0" prefWidth="158.0" text="Доабви" />
+      <Label layoutX="116.0" layoutY="33.0" text="Добавяне на читател в ситемата:" />
+      <Label fx:id="successAdd" layoutX="129.0" layoutY="276.0" text="Читателят беше успешно добавен" visible="false" />
+      <Label fx:id="notSuccess" layoutX="116.0" layoutY="285.0" text="Вече съществува читател с такъв имейл" visible="false" />
+   </children>
+</AnchorPane>
