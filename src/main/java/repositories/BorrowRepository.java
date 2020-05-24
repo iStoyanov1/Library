@@ -8,6 +8,7 @@ import domain.entities.Reader;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import java.sql.Date;
 import java.util.List;
 
@@ -29,20 +30,27 @@ public class BorrowRepository {
         entityManager.getTransaction().commit();
 
     }
-    public static List<Borrow> borrows(String title){
-        List<Borrow> borrows = entityManager.createQuery("select b from borrows b where b.book.title = :title", Borrow.class)
-                .setParameter("title",title)
+
+
+
+
+    public static Query updateBorrow(Date date1, int id){
+        entityManager.getTransaction().begin();
+        Query borrow = entityManager.createQuery("update borrows b set b.endDate = :date1 where b.book.id = :id")
+                .setParameter("date1", date1)
+                .setParameter("id", id);
+        borrow.executeUpdate();
+        entityManager.getTransaction().commit();
+
+        return borrow;
+    }
+    public static List<Borrow> borrows(String book){
+        List<Borrow> borrows = entityManager.createQuery("select b from borrows b " +
+                "inner join books b2 on b.book.id = b2.id " +
+                "where b2.title = :title", Borrow.class)
+                .setParameter("title", book)
                 .getResultList();
 
         return borrows;
     }
-
-    public static List<Borrow> employeeBorrows(String name){
-        List<Borrow> borrows = entityManager.createQuery("select b from borrows b where b.employee.name = :name", Borrow.class)
-                .setParameter("name", name)
-                .getResultList();
-
-        return borrows;
-    }
-
 }

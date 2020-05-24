@@ -1,25 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="602.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="services.BookReferenceService">
    <children>
-      <TextField fx:id="bookField" layoutX="234.0" layoutY="47.0" prefHeight="26.0" prefWidth="156.0" />
-      <Label layoutX="122.0" layoutY="51.0" text="Заглавие на книга:" />
-      <TableView fx:id="tableView" layoutX="107.0" layoutY="117.0" prefHeight="200.0" prefWidth="409.0">
+      <TextField fx:id="bookField" layoutX="234.0" layoutY="77.0" prefHeight="26.0" prefWidth="156.0" />
+      <Label layoutX="109.0" layoutY="80.0" text="Заглавие на книга:">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <TableView fx:id="tableView" layoutX="148.0" layoutY="173.0" prefHeight="200.0" prefWidth="337.0">
         <columns>
-          <TableColumn fx:id="title" prefWidth="92.79998779296875" text="Заглавие" />
-          <TableColumn fx:id="author" prefWidth="88.00004577636719" text="Автор" />
-            <TableColumn fx:id="startDate" prefWidth="100.800048828125" text="Дата на заемане" />
-            <TableColumn fx:id="endDate" prefWidth="124.800048828125" text="Дата на връщане" />
+          <TableColumn fx:id="title" prefWidth="147.1999969482422" text="Заглавие" />
+          <TableColumn fx:id="author" prefWidth="104.79998779296875" text="Автор" />
+            <TableColumn fx:id="date" prefWidth="84.80001220703127" text="Дата:" />
         </columns>
       </TableView>
       <Label fx:id="bookLabel" layoutX="262.0" layoutY="90.0" prefHeight="18.0" prefWidth="74.0" />
-      <Button fx:id="reference" layoutX="399.0" layoutY="47.0" mnemonicParsing="false" onAction="#reference" text="Справка" />
+      <Label layoutX="209.0" layoutY="22.0" text="Заети книги в момента:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Line endX="213.79998779296875" endY="7.62939453125E-6" layoutX="299.0" layoutY="54.0" startX="-189.40000915527344" startY="7.62939453125E-6" />
+      <JFXButton fx:id="reference" alignment="TOP_LEFT" layoutX="395.0" layoutY="74.0" onAction="#reference" prefHeight="27.0" prefWidth="92.0" style="-fx-border-color: #b1b1b1; -fx-border-radius: 50%;" text="Търси:" underline="true" />
+      <AnchorPane id="search-icon" layoutX="458.0" layoutY="78.0" prefHeight="20.0" prefWidth="18.0" stylesheets="@css/style.css" />
+      <DatePicker fx:id="fromDate" layoutX="201.0" layoutY="123.0" prefHeight="26.0" prefWidth="99.0" />
+      <Label layoutX="45.0" layoutY="126.0" text="Заети книги за период:" />
+      <DatePicker fx:id="toDate" layoutX="330.0" layoutY="123.0" prefHeight="26.0" prefWidth="99.0" />
+      <Label layoutX="184.0" layoutY="127.0" text="От:" />
+      <Label layoutX="312.0" layoutY="127.0" text="До:" />
+      <Line endX="366.39288330078125" endY="-1.3070907592773438" layoutX="210.0" layoutY="66.0" startX="-172.19285583496094" startY="-1.3070831298828125" stroke="#7a9fc2" />
+      <Line endX="366.79998779296875" layoutX="210.0" layoutY="161.0" startX="-172.40000915527344" stroke="#7a9fc2" />
+      <JFXButton fx:id="referenceByDate" alignment="TOP_LEFT" layoutX="433.0" layoutY="122.0" onAction="#referenceByDate" prefHeight="27.0" prefWidth="134.0" style="-fx-border-color: #b1b1b1; -fx-border-radius: 50%;" text="Търсене по дата:" underline="true" />
+      <AnchorPane id="search-icon" layoutX="539.0" layoutY="126.0" prefHeight="20.0" prefWidth="18.0" stylesheets="@css/style.css" />
+      <Line endX="-58.89998245239258" endY="-98.5999984741211" layoutX="96.0" layoutY="165.0" startX="-58.9000129699707" startY="-4.5" stroke="#7a9fc2" />
+      <Line endX="-58.89998245239258" endY="-98.5999984741211" layoutX="636.0" layoutY="164.0" startX="-58.9000129699707" startY="-4.5" stroke="#7a9fc2" />
+      <AnchorPane id="background" layoutX="548.0" layoutY="-1.0" prefHeight="38.0" prefWidth="46.0" stylesheets="@css/style.css" />
    </children>
 </AnchorPane>

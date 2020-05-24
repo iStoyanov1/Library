@@ -40,15 +40,12 @@ public class LoginEmployeeService {
             invalid.setVisible(true);
         }
 
-
-
-
     }
 
     private void home() throws IOException {
         submit.getScene().getWindow().hide();
         Stage login = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/home.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/employee-references.fxml"));
         Scene scene = new Scene(root);
         login.setScene(scene);
         login.show();

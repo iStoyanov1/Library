@@ -28,14 +28,6 @@ public class BookRepository {
 
         return book;
     }
-    public static List<Book> findBookByGenre(String genre){
-        List<Book> books = entityManager.createQuery("select b from books b where b.genre.genre = :genre", Book.class)
-                .setParameter("genre", genre)
-                .getResultList();
-
-        return books;
-    }
-
     public static List<Book> findBookByCategory(Category category) {
 
         List<Book> books = entityManager.createQuery("select b from books b where b.category = :category", Book.class)
@@ -43,24 +35,38 @@ public class BookRepository {
                 .getResultList();
 
         return books;
-
     }
 
     public static List<Book> findBookByYear(String year) {
 
-        List<Book> books = entityManager.createQuery("select b from books b where b.year = :year", Book.class)
-                .setParameter("year", year)
+        List<Book> books = entityManager.createQuery("select b from books b where b.year like :year", Book.class)
+                .setParameter("year", '%'+year+'%')
                 .getResultList();
 
         return books;
     }
+    public static Book findBookById(int id){
+        Book book = entityManager.createQuery("select b from books b where b.id = :id", Book.class)
+                .setParameter("id", id)
+                .getSingleResult();
 
-    public static List<Book> findBookBorrows(String title){
-        Query query = entityManager.createQuery("select b from books b where b.title = :title")
-                .setParameter("title",title);
-        List<Book> books = query.getResultList();
-
-        return books;
+        return book;
     }
+    public static List<Book> topBooks(){
+        List<Book> topBooks = entityManager.createQuery("select b " +
+                "from books b\n" +
+                "inner join borrows b2 on b.id = b2.book.id\n" +
+                "group by b2.book.id\n" +
+                "order by count(b2.book.id) desc", Book.class)
+                .getResultList();
 
+        return topBooks;
+    }
+    public static List<Book> findBooksByLetter(String title){
+        List<Book> book = entityManager.createQuery("select b from books b where b.title like :title", Book.class)
+                .setParameter("title", '%'+title+'%')
+                .getResultList();
+
+        return book;
+    }
 }

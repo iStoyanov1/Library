@@ -1,11 +1,13 @@
 package repositories;
 
+import domain.entities.Borrow;
 import domain.entities.Employee;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
+import java.util.List;
 
 public class EmployeeRepository {
 
@@ -23,5 +25,14 @@ public class EmployeeRepository {
             throw new NoResultException();
         }
         return employee;
+    }
+
+    public static List<Borrow> employeeBorrows(String name){
+        List<Borrow> borrows = entityManager.createQuery("select b from borrows b inner join employees e " +
+                "on b.employee.id = e.id where e.name = :name", Borrow.class)
+                .setParameter("name", name)
+                .getResultList();
+
+        return borrows;
     }
 }

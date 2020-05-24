@@ -1,13 +1,9 @@
 package repositories;
 
 import domain.entities.Book;
-import domain.entities.Borrow;
 import domain.entities.RentBook;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.NoResultException;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
 
@@ -55,4 +51,54 @@ public class RentBookRepository {
        }
        return rentBook;
    }
+
+  public static void deleteRent(Date startDate, Date endDate, int bookId){
+      entityManager.getTransaction().begin();
+      Query deleteRent = entityManager.createQuery("delete From rent_book rb where " +
+              "rb.date between :startDate and :endDate and rb.book.id = :id")
+              .setParameter("startDate", startDate)
+              .setParameter("endDate", endDate)
+              .setParameter("id", bookId);
+      deleteRent.executeUpdate();
+      entityManager.getTransaction().commit();
+  }
+
+  public static List<RentBook> rentBooks(){
+      List<RentBook> rentBooks = entityManager.createQuery("select rb from rent_book rb", RentBook.class)
+              .getResultList();
+
+      return rentBooks;
+  }
+
+  public static Date maxDate(int bookId, Date date){
+      return (Date) entityManager.createQuery("select MAX(rb.date)" +
+              "from rent_book rb\n" +
+              "inner join books b on rb.book.id = b.id " +
+              "where b.id = :bookId and rb.date = :date")
+              .setParameter("bookId", bookId)
+              .setParameter("date", date)
+              .getSingleResult();
+
+  }
+
+    public static List<RentBook> findBookByTitle(String title) {
+
+      List<RentBook> rentBooks = entityManager.createQuery("select rb from rent_book rb " +
+              "inner join books b on rb.book.id = b.id " +
+              "where b.title like :title ", RentBook.class)
+              .setParameter("title", '%'+title+'%')
+              .getResultList();
+
+      return rentBooks;
+
+    }
+    public static List<RentBook> booksByDate(Date startDate, Date endDate){
+      List<RentBook> booksByDate = entityManager.createQuery("select rb from rent_book rb " +
+              "where rb.date between :startDate and :endDate", RentBook.class)
+              .setParameter("startDate", startDate)
+              .setParameter("endDate", endDate)
+              .getResultList();
+
+      return booksByDate;
+    }
 }

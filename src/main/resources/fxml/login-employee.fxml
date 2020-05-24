@@ -1,32 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="services.LoginEmployeeService">
+<AnchorPane prefHeight="433.0" prefWidth="741.0" style="-fx-background-color: #7a9fc2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="services.LoginEmployeeService">
    <children>
-      <TextField fx:id="nameField" layoutX="269.0" layoutY="112.0" prefHeight="26.0" prefWidth="238.0" />
-      <Label layoutX="225.0" layoutY="115.0" prefHeight="20.0" prefWidth="44.0" text="Име:">
+      <TextField fx:id="nameField" layoutX="374.0" layoutY="125.0" prefHeight="26.0" prefWidth="260.0" />
+      <Label layoutX="331.0" layoutY="128.0" prefHeight="20.0" prefWidth="44.0" text="Име:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="212.0" layoutY="203.0" text="Парола:">
+      <Label layoutX="318.0" layoutY="243.0" text="Парола:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <PasswordField fx:id="passwordField" layoutX="269.0" layoutY="200.0" prefHeight="26.0" prefWidth="238.0" />
-      <Button fx:id="submit" layoutX="289.0" layoutY="318.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="150.0" text="Потвърди" />
-      <Label fx:id="invalid" layoutX="269.0" layoutY="264.0" text="Потребителят не съществува!" textFill="#fd0202" visible="false">
+      <PasswordField fx:id="passwordField" layoutX="374.0" layoutY="240.0" prefHeight="26.0" prefWidth="260.0" />
+      <Label fx:id="invalid" layoutX="420.0" layoutY="311.0" text="Потребителят не съществува!" textFill="#fd0202" visible="false">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
+      <Label layoutX="475.0" layoutY="49.0" text="Вход">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Line endX="117.0" endY="7.62939453125E-6" layoutX="503.0" layoutY="81.0" startX="-125.39999389648438" startY="7.62939453125E-6" />
+      <AnchorPane id="user-icon" layoutX="634.0" layoutY="111.0" prefHeight="66.0" prefWidth="66.0" stylesheets="@css/style.css" />
+      <AnchorPane id="password-icon" layoutX="640.0" layoutY="217.0" prefHeight="65.0" prefWidth="58.0" stylesheets="@css/style.css" />
+      <AnchorPane id="logo" layoutX="33.0" layoutY="65.0" prefHeight="285.0" prefWidth="276.0" stylesheets="@css/style.css" />
+      <JFXButton fx:id="submit" layoutX="421.0" layoutY="351.0" onAction="#login" prefHeight="38.0" prefWidth="181.0" style="-fx-border-color: black; -fx-border-radius: 8%;" text="Потвърди">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>
